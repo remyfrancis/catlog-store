@@ -1,0 +1,15 @@
+term_id/__text,term_taxonomy/__text,term_slug/__text,term_name/__cdata,term_parent/__text
+17,pa_color,black,Black,
+19,pa_color,blue,Blue,
+5,product_type,external,external,
+16,pa_color,green,Green,
+3,product_type,grouped,grouped,
+2,product_type,simple,simple,
+4,product_type,variable,variable,
+14,product_cat,clothing,Clothing,
+18,product_cat,hoodies,Hoodies,clothing
+13,product_cat,music,Music,
+20,product_cat,posters,Posters,
+21,product_cat,singles,Singles,music
+15,product_cat,t-shirts,T-shirts,clothing
+22,product_cat,albums,Albums,music
