@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, Slides } from 'ionic-angular';
 
 import * as WC from 'woocommerce-api';
 
@@ -11,6 +11,8 @@ export class HomePage {
 
   WooCommerce: any;
   products: any[];
+
+  @ViewChild('productSlides') productSlides: Slides;
 
   constructor(public navCtrl: NavController) {
     this.WooCommerce = WC({
@@ -25,6 +27,16 @@ export class HomePage {
     }, (err) => {
       console.log(err)
     })
+  }
+
+  ionViewDidLoad(){
+    setInterval(()=>{
+
+      if(this.productSlides.getActiveIndex() == this.productSlides.length() -1)
+        this.productSlides.slideTo(0)
+
+      this.productSlides.slideNext();
+    }, 3000)
   }
 
 }
