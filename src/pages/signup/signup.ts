@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 
 import * as WC from 'woocommerce-api';
 
@@ -14,7 +14,7 @@ export class Signup {
   WooCommerce: any;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public alertCtrl: AlertController) {
   
   this.newUser.billing_address = {};
   this.newUser.shipping_address = {}
@@ -23,7 +23,7 @@ export class Signup {
   this.WooCommerce = WC({
     url: "http://localhost/wordpress", //Replace with app's url
     consumerKey: "ck_a5f9d6e037f46e3195cd04aa0897511984186dde",
-    consumerSecret: "cs_9becbaec07b104a8ae21f8e0866b20c4a4fec4d9"
+    consumerSecret: "cs_9becbaec07b104a8ae21f8e0866b20c4a4fec4d9",
   });
 
   }
@@ -73,6 +73,72 @@ export class Signup {
       
       console.log(validEmail);
     }
+
+  }
+
+  signup(){
+    let customerData = {
+      customer : {}
+    }
+
+    customerData.customer = {
+      "email": this.newUser.email,
+      "first_name": this.newUser.first_name,
+      "last_name": this.newUser.last_name,
+      "username": this.newUser.username,
+      "password": this.newUser.password,
+      "billing_address": {
+        "first_name": this.newUser.first_name,
+        "last_name": this.newUser.last_name,
+        "company": "",
+        "address_1": this.newUser.billing_address.address_1,
+        "address_2": this.newUser.billing_address.address_2,
+        "city": this.newUser.billing_address.city,
+        "state": this.newUser.billing_address.state,
+        "postcode": this.newUser.billing_address.postcode,
+        "country": this.newUser.billing_address.country,
+        "email": this.newUser.email,
+        "phone": this.newUser.billing_address.phone
+      },
+      "shipping_address": {
+        "first_name": this.newUser.first_name,
+        "last_name": this.newUser.last_name,
+        "company": "",
+        "address_1": this.newUser.shipping_address.address_1,
+        "address_2": this.newUser.shipping_address.address_2,
+        "city": this.newUser.shipping_address.city,
+        "state": this.newUser.shipping_address.state,
+        "postcode": this.newUser.shipping_address.postcode,
+        "country": this.newUser.shipping_address.country 
+      }
+    }
+
+    if(this.billing_shipping_same){
+      this.newUser.shipping_address = this.newUser.shipping_address;
+    }
+
+    this.WooCommerce.postAsync('customers', customerData).then((data)=>{
+      let response = (JSON.parse(data.body));
+
+      if(response.customer){
+        this.alertCtrl.create({
+          title: "Account created.",
+          message: "Your account has been created successfully! Please login to proceed.",
+          buttons: [{
+            text: "login",
+            handler: ()=>{
+              //TODO
+            }
+          }]
+        }).present();
+      } else if(response.errors){
+        this.toastCtrl.create({
+          message: response.errors[0].message,
+          showCloseButton: true
+        }).present();
+      }
+    })
+
   }
 
 }
