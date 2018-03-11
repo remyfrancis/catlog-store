@@ -10,6 +10,7 @@ import { ProductDetails } from '../pages/product-details/product-details';
 import { Cart } from '../pages/cart/cart';
 import { Signup } from '../pages/signup/signup';
 import { Login } from '../pages/login/login';
+import { Checkout } from '../pages/checkout/checkout';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,7 +26,8 @@ import { HttpModule } from '@angular/http';
     ProductDetails,
     Cart,
     Signup,
-    Login
+    Login,
+    Checkout
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { HttpModule } from '@angular/http';
     ProductDetails,
     Cart,
     Signup,
-    Login
+    Login,
+    Checkout
   ],
   providers: [
     StatusBar,
