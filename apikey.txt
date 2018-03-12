@@ -1,2 +1,4 @@
 Consumer key: ck_a5f9d6e037f46e3195cd04aa0897511984186dde
 Consumer secret: cs_9becbaec07b104a8ae21f8e0866b20c4a4fec4d9
+
+Paypal Client ID: Ab3RYOGupKTEt0JG5Z9PbB0ZWK1MF_a9AoSoAdd3b2K6CuuC361sfcthd7gTCb1iGaWylX1R45Q_98th
