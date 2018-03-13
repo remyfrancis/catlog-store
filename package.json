@@ -29,6 +29,7 @@
     "card.io.cordova.mobilesdk": "^2.1.0",
     "com.paypal.cordova.mobilesdk": "^3.5.0",
     "cordova-android": "6.3.0",
+    "cordova-browser": "5.0.3",
     "cordova-plugin-device": "^2.0.1",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.16",
@@ -58,7 +59,8 @@
       "onesignal-cordova-plugin": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "browser"
     ]
   }
 }

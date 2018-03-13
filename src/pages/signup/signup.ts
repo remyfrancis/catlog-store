@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 
 import * as WC from 'woocommerce-api';
 
+@IonicPage({})
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html',
